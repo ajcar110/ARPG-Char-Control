@@ -6,9 +6,6 @@ class_name State
 
 @export var animation : AnimatedSprite2D
 
-var facing
-
-
 signal Transitioned
 
 func Enter():
@@ -21,4 +18,5 @@ func Update(delta:float):
 	pass
 
 func Physics_Update(delta:float):
-	pass
+	character.handleInput()
+	character.move_and_slide()
