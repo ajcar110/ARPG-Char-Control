@@ -24,7 +24,7 @@ func handleInput():
 		velocity = dash_direction * dash_speed
 
 func facing_direction():
-	if velocity.y < 0: facing = "Up"
-	elif velocity.y >0: facing = "Down"
-	elif velocity.x < 0: facing  = "Left"
+	if velocity.x < 0: facing  = "Left"
 	elif velocity.x > 0: facing = "Right"
+	elif velocity.y >0: facing = "Down"
+	elif velocity.y < 0: facing = "Up"
