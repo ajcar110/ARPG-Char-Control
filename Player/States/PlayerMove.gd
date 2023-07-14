@@ -17,6 +17,8 @@ func Physics_Update(delta:float):
 			Transitioned.emit(self,"Dash")
 	if character.velocity == Vector2.ZERO:
 		Transitioned.emit(self,"Idle")
+	if character.attacking:
+		Transitioned.emit(self,"Attack")
 	super(delta)
 
 

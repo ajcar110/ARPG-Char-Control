@@ -1,20 +1,24 @@
-[gd_scene load_steps=156 format=3 uid="uid://dtjfsbetvmbv6"]
+[gd_scene load_steps=181 format=3 uid="uid://dtjfsbetvmbv6"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_8eygt"]
 [ext_resource type="Texture2D" uid="uid://c1xo5s3xqvfy3" path="res://Assets/character/Template/Down/TemplateDownIlde.png" id="2_4uscy"]
 [ext_resource type="Texture2D" uid="uid://c5bjejners1tb" path="res://Assets/character/Template/Down/TemplateDownRun.png" id="2_vyqjo"]
 [ext_resource type="Texture2D" uid="uid://xgsgwvbmniad" path="res://Assets/character/Template/Left/TemplateLeftIdle.png" id="3_8fl2j"]
+[ext_resource type="Texture2D" uid="uid://tnwm5j3bupdx" path="res://Assets/character/Template/Down/TemplateDownATK.png" id="3_573xr"]
 [ext_resource type="Texture2D" uid="uid://daoaduylvcspb" path="res://Assets/character/Template/Down/TemplateDownWalk.png" id="3_qew1s"]
 [ext_resource type="Texture2D" uid="uid://b63p8v4yvljrg" path="res://Assets/character/Template/Left/TemplateLeftRun.png" id="3_wky4b"]
 [ext_resource type="Texture2D" uid="uid://icmgbd373ekh" path="res://Assets/character/Template/Right/TemplateRightIdle.png" id="4_0m18g"]
+[ext_resource type="Texture2D" uid="uid://br65na8kqxnuh" path="res://Assets/character/Template/Left/TemplateLeftAtk.png" id="4_1et74"]
 [ext_resource type="Texture2D" uid="uid://c7ulh8b36fcao" path="res://Assets/character/Template/Left/TemplateLeftWalk.png" id="4_5lro1"]
 [ext_resource type="Texture2D" uid="uid://c56pjras87cdv" path="res://Assets/character/Template/Left/TemplateLeftRoll.png" id="4_dl2qj"]
 [ext_resource type="Texture2D" uid="uid://of42wa5t7mv2" path="res://Assets/character/Template/Right/TemplateRightRoll.png" id="4_k3uei"]
 [ext_resource type="Texture2D" uid="uid://d3qrt1bc3gg48" path="res://Assets/character/Template/Down/TemplateDownRoll.png" id="5_3qmp3"]
 [ext_resource type="Texture2D" uid="uid://df8obdtdqw0uf" path="res://Assets/character/Template/Right/TemplateRightWalk.png" id="5_ekgtd"]
+[ext_resource type="Texture2D" uid="uid://drek4mcx2h7nc" path="res://Assets/character/Template/Right/TemplateRightAtk.png" id="5_noxmf"]
 [ext_resource type="Texture2D" uid="uid://clvk8xd3vji8a" path="res://Assets/character/Template/Up/TemplateUpIdle.png" id="5_rmcnr"]
 [ext_resource type="Texture2D" uid="uid://cjxlqvopotspt" path="res://Assets/character/Template/Up/TemplateUpRun.png" id="5_ykk55"]
 [ext_resource type="Texture2D" uid="uid://go6elboutwxo" path="res://Assets/character/Template/Up/TemplateUpWalk.png" id="6_2llhm"]
+[ext_resource type="Texture2D" uid="uid://decy03empd32g" path="res://Assets/character/Template/Up/TemplateUpAtk.png" id="6_qwetl"]
 [ext_resource type="Texture2D" uid="uid://bpry7cl3ec3pm" path="res://Assets/character/Template/Right/TemplateRightRun.png" id="7_vcij0"]
 [ext_resource type="Texture2D" uid="uid://c774q2clqabd6" path="res://Assets/character/Template/Up/TemplateUpRoll.png" id="8_8dcu1"]
 [ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="10_bvrei"]
@@ -25,9 +29,90 @@
 [ext_resource type="PackedScene" uid="uid://cnppyhas123df" path="res://EntityPieces/damagable.tscn" id="19_k2qu6"]
 [ext_resource type="PackedScene" uid="uid://cgn6y6i3qwm2d" path="res://EntityPieces/hurtbox.tscn" id="20_73c2a"]
 [ext_resource type="Script" path="res://Player/States/Dashrecover.gd" id="21_hldwy"]
+[ext_resource type="Script" path="res://PlayerAttack.gd" id="28_bdrl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsr8o"]
 size = Vector2(22, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htd35"]
+atlas = ExtResource("3_573xr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqi1n"]
+atlas = ExtResource("3_573xr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p1aq"]
+atlas = ExtResource("3_573xr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psab4"]
+atlas = ExtResource("3_573xr")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdet1"]
+atlas = ExtResource("3_573xr")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lcm5"]
+atlas = ExtResource("4_1et74")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4itqf"]
+atlas = ExtResource("4_1et74")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gerul"]
+atlas = ExtResource("4_1et74")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhtvr"]
+atlas = ExtResource("4_1et74")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qws57"]
+atlas = ExtResource("4_1et74")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glhv3"]
+atlas = ExtResource("5_noxmf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi5pe"]
+atlas = ExtResource("5_noxmf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d38yd"]
+atlas = ExtResource("5_noxmf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srq4w"]
+atlas = ExtResource("5_noxmf")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vla8y"]
+atlas = ExtResource("5_noxmf")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lowlb"]
+atlas = ExtResource("6_qwetl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afnbu"]
+atlas = ExtResource("6_qwetl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvptx"]
+atlas = ExtResource("6_qwetl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok1p6"]
+atlas = ExtResource("6_qwetl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cme7"]
+atlas = ExtResource("6_qwetl")
+region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34b1l"]
 atlas = ExtResource("2_vyqjo")
@@ -545,6 +630,86 @@ region = Rect2(448, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_htd35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqi1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8p1aq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psab4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdet1")
+}],
+"loop": false,
+"name": &"AtkDown",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lcm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4itqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gerul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhtvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qws57")
+}],
+"loop": false,
+"name": &"AtkLeft",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glhv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi5pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d38yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srq4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vla8y")
+}],
+"loop": false,
+"name": &"AtkRight",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lowlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afnbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvptx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok1p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cme7")
+}],
+"loop": false,
+"name": &"AtkUp",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_34b1l")
 }, {
 "duration": 1.0,
@@ -1021,8 +1186,10 @@ shape = SubResource("RectangleShape2D_wsr8o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0407i")
-animation = &"DashRecoverUp"
+animation = &"AtkRight"
 autoplay = "IdleDown"
+frame = 4
+frame_progress = 1.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("InitialState")]
 script = ExtResource("10_bvrei")
@@ -1049,6 +1216,11 @@ script = ExtResource("21_hldwy")
 character = NodePath("../..")
 animation = NodePath("../../AnimatedSprite2D")
 
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "animation")]
+script = ExtResource("28_bdrl5")
+character = NodePath("../..")
+animation = NodePath("../../AnimatedSprite2D")
+
 [node name="DashTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -1063,7 +1235,12 @@ script = ExtResource("18_pol2v")
 
 [node name="Damagable" parent="." instance=ExtResource("19_k2qu6")]
 
+[node name="ATKTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/Dash" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashTimer" to="StateMachine/Dashrecover" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="ATKTimer" to="StateMachine/Attack" method="_on_timer_timeout"]
 
 [editable path="HurtBox"]

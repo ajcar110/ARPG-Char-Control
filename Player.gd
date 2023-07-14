@@ -8,6 +8,7 @@ extends CharacterBody2D
 var dash_direction: Vector2
 var facing: String = "Down"
 var dashing: bool = false
+var attacking : bool = false
 var can_dash: bool = true
 var direction: Vector2 = Vector2.DOWN
 
@@ -22,6 +23,8 @@ func handleInput():
 			direction = Vector2.DOWN
 		dash_direction = direction.normalized()
 		velocity = dash_direction * dash_speed
+	if Input.is_action_just_pressed("atk"):
+		attacking=true
 
 func facing_direction():
 	if velocity.x < 0: facing  = "Left"
