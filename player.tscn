@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://dtjfsbetvmbv6"]
+[gd_scene load_steps=147 format=3 uid="uid://dtjfsbetvmbv6"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_8eygt"]
 [ext_resource type="Texture2D" uid="uid://c1xo5s3xqvfy3" path="res://Assets/character/Template/Down/TemplateDownIlde.png" id="2_4uscy"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c7ulh8b36fcao" path="res://Assets/character/Template/Left/TemplateLeftWalk.png" id="4_5lro1"]
 [ext_resource type="Texture2D" uid="uid://c56pjras87cdv" path="res://Assets/character/Template/Left/TemplateLeftRoll.png" id="4_dl2qj"]
 [ext_resource type="Texture2D" uid="uid://of42wa5t7mv2" path="res://Assets/character/Template/Right/TemplateRightRoll.png" id="4_k3uei"]
+[ext_resource type="Texture2D" uid="uid://d3qrt1bc3gg48" path="res://Assets/character/Template/Down/TemplateDownRoll.png" id="5_3qmp3"]
 [ext_resource type="Texture2D" uid="uid://df8obdtdqw0uf" path="res://Assets/character/Template/Right/TemplateRightWalk.png" id="5_ekgtd"]
 [ext_resource type="Texture2D" uid="uid://clvk8xd3vji8a" path="res://Assets/character/Template/Up/TemplateUpIdle.png" id="5_rmcnr"]
 [ext_resource type="Texture2D" uid="uid://cjxlqvopotspt" path="res://Assets/character/Template/Up/TemplateUpRun.png" id="5_ykk55"]
@@ -89,6 +90,38 @@ region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ttok1"]
 atlas = ExtResource("3_wky4b")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgtrj"]
+atlas = ExtResource("5_3qmp3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6dvk"]
+atlas = ExtResource("5_3qmp3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ahj7"]
+atlas = ExtResource("5_3qmp3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnl0x"]
+atlas = ExtResource("5_3qmp3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnk0f"]
+atlas = ExtResource("5_3qmp3")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqgde"]
+atlas = ExtResource("5_3qmp3")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u38yo"]
+atlas = ExtResource("5_3qmp3")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_noe8p"]
+atlas = ExtResource("5_3qmp3")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58hd1"]
@@ -537,6 +570,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qgtrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6dvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ahj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnl0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnk0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqgde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u38yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_noe8p")
+}],
+"loop": false,
+"name": &"DashRecoverDown",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_58hd1")
 }, {
 "duration": 1.0,
@@ -896,7 +958,7 @@ shape = SubResource("RectangleShape2D_wsr8o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0407i")
-animation = &"DashUp"
+animation = &"DashRecoverDown"
 autoplay = "IdleDown"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("InitialState")]
