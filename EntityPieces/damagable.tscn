@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnppyhas123df"]
+
+[ext_resource type="Script" path="res://EntityPieces/Damagable.gd" id="1_2v0ag"]
+
+[node name="Damagable" type="Node"]
+script = ExtResource("1_2v0ag")
