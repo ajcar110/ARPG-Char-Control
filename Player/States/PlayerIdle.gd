@@ -3,6 +3,8 @@ extends State
 class_name Idle
 
 func Enter():
+	if character.hurtbox:
+		character.hurtbox.monitorable = true
 	animation.play("Idle" + character.facing)
 
 func Physics_Update(delta):

@@ -1,8 +1,8 @@
 extends CharacterBody2D
-
 @export var speed = 100
 @export var dash_speed = 200
 @onready var hurtbox = $HurtBox
+@onready var abilities = $Abilities
 
 
 var dash_direction: Vector2
@@ -11,6 +11,10 @@ var dashing: bool = false
 var attacking : bool = false
 var can_dash: bool = true
 var direction: Vector2 = Vector2.DOWN
+var ability_1
+
+func _ready():
+	ability_1 = Utils.load_ability(self,"Shoot")
 
 func handleInput():
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -25,6 +29,8 @@ func handleInput():
 		velocity = dash_direction * dash_speed
 	if Input.is_action_just_pressed("atk"):
 		attacking=true
+	if Input.is_action_just_pressed("ability1"):
+		ability_1.Execute()
 
 func facing_direction():
 	if velocity.x < 0: facing  = "Left"
