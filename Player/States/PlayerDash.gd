@@ -1,14 +1,15 @@
 extends State
 
-@export var dashtimer: Timer
 
 func Enter():
 	character.hurtbox.monitorable = false
 	animation.play("Dash" + character.facing)
 	character.can_dash = false
-	dashtimer.start()
+	await get_tree().create_timer(1).timeout
+	Transitioned.emit(self,"Dashrecover")
 
-func _on_animated_sprite_2d_animation_finished():
-	if animation.animation == "Dash" + character.facing:
+
+
+
+func Exit():
 		character.dashing = false
-		Transitioned.emit(self,"Dashrecover")

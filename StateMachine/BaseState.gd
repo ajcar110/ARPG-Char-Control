@@ -4,7 +4,7 @@ class_name State
 
 @export var character : CharacterBody2D
 
-@export var animation : AnimatedSprite2D
+@export var animation : AnimationPlayer
 
 signal Transitioned
 
