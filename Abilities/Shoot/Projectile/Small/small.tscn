@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj1n08onvuvyi"]
+
+[ext_resource type="PackedScene" uid="uid://dqhm1ksvckoys" path="res://Abilities/Shoot/Projectile/Projectile.tscn" id="1_a5g75"]
+[ext_resource type="Script" path="res://Abilities/Shoot/Projectile/Small/small.gd" id="2_dgcw8"]
+
+[node name="Small" instance=ExtResource("1_a5g75")]
+script = ExtResource("2_dgcw8")
+range = 10000

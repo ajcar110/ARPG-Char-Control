@@ -1190,10 +1190,8 @@ shape = SubResource("RectangleShape2D_wsr8o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0407i")
-animation = &"AtkRight"
+animation = &"IdleDown"
 autoplay = "IdleDown"
-frame = 4
-frame_progress = 1.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("InitialState")]
 script = ExtResource("23_tgrf6")
@@ -1225,7 +1223,8 @@ script = ExtResource("28_5yrpp")
 character = NodePath("../..")
 animation = NodePath("../../AnimatedSprite2D")
 
-[node name="Abilities" type="Node" parent="."]
+[node name="Abilities" type="Node2D" parent="."]
+position = Vector2(8, 5)
 
 [node name="DashTimer" type="Timer" parent="."]
 one_shot = true

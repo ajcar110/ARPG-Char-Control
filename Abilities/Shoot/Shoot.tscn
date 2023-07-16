@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Abilities/Shoot/Shoot.gd" id="1_kjy1a"]
 
-[node name="Shoot" type="Node"]
+[node name="Shoot" type="Node2D"]
 script = ExtResource("1_kjy1a")

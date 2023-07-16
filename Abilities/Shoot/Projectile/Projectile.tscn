@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqhm1ksvckoys"]
+
+[ext_resource type="Script" path="res://Abilities/Shoot/Projectile/BaseProjectile.gd" id="1_8v8et"]
+[ext_resource type="Texture2D" uid="uid://bovsedtebyh1b" path="res://Assets/Projectiles/bullet.png" id="2_b7she"]
+
+[node name="Projectile" type="CharacterBody2D"]
+script = ExtResource("1_8v8et")
+speed = 4
+distance = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_b7she")

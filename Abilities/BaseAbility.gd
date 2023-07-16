@@ -2,6 +2,8 @@ extends Node
 
 class_name Ability
 
+var source
+
 
 func Execute():
-	pass
+	print("NO EXECUTE FUNCTION")

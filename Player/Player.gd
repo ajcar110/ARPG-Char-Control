@@ -12,6 +12,10 @@ var attacking : bool = false
 var can_dash: bool = true
 var direction: Vector2 = Vector2.DOWN
 var ability_1
+var direction_map = {"Left":Vector2.LEFT,
+					"Right":Vector2.RIGHT,
+					"Up":Vector2.UP,
+					"Down":Vector2.DOWN}
 
 func _ready():
 	ability_1 = Utils.load_ability(self,"Shoot")
