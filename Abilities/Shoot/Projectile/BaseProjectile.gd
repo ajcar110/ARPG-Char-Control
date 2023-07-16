@@ -5,7 +5,6 @@ class_name Projectile
 #speed is a factor of 32 pixels covered in 1 sec ---- ex: speed 1 = 32 , speed 3 = 96
 @export var speed = 1
 @export var damage = 5
-#range calculated as physics frames
 @export var distance = 10
 
 var spawnpoint

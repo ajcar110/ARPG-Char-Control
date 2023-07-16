@@ -5,8 +5,7 @@
 
 [node name="Projectile" type="CharacterBody2D"]
 script = ExtResource("1_8v8et")
-speed = 4
-distance = 2
+speed = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_b7she")
