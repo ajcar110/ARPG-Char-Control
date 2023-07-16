@@ -1177,8 +1177,6 @@ animations = [{
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_04dfh")
-speed = 150
-dash_speed = 300
 
 [node name="HurtBox" parent="." instance=ExtResource("2_plmk4")]
 collision_layer = 8

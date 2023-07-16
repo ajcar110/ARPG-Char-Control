@@ -14,11 +14,9 @@ var facing
 
 func _ready():
 	spawnpoint = position
-	print(spawnpoint)
 
 func  _physics_process(delta):
 	velocity = (speed*32) * source.direction_map[facing]
-	print(velocity)
 	move_and_slide()
 	
 	if self.position.distance_to(spawnpoint) >= distance*32:

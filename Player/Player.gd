@@ -1,6 +1,10 @@
 extends CharacterBody2D
-@export var speed = 100
-@export var dash_speed = 200
+
+
+#speed & dash_speed is a factor of 32 pixels covered in 1 sec
+# ex: speed 1 = 32 , speed 3 = 96
+@export var speed = 4
+@export var dash_speed = 8
 @onready var hurtbox = $HurtBox
 @onready var abilities = $Abilities
 
@@ -23,14 +27,14 @@ func _ready():
 func handleInput():
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if !dashing:
-		velocity = direction * speed
+		velocity = direction * (speed*32)
 	facing_direction()
 	if Input.is_action_just_pressed("dash") && can_dash:
 		dashing = true
 		if direction == Vector2.ZERO:
 			direction = Vector2.DOWN
 		dash_direction = direction.normalized()
-		velocity = dash_direction * dash_speed
+		velocity = dash_direction * (dash_speed*32)
 	if Input.is_action_just_pressed("atk"):
 		attacking=true
 	if Input.is_action_just_pressed("ability1"):
