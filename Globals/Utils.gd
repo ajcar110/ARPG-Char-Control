@@ -1,7 +1,7 @@
 extends Node
 
 
-func load_ability(source:CharacterBody2D,name:String):
+func load_ability(source,name:String):
 	var scene = load("res://Abilities/" +name + "/" + name + ".tscn")
 	var sceneNode = scene.instantiate()
 	source.abilities.add_child(sceneNode)
@@ -10,7 +10,7 @@ func load_ability(source:CharacterBody2D,name:String):
 
 
 
-func spawn_projectile(source:CharacterBody2D, name : String, position : Vector2):
+func spawn_projectile(source, name : String, position : Vector2):
 	var world = get_tree().current_scene
 	var scene = load("res://Abilities/Shoot/Projectile/" +name + "/" + name + ".tscn")
 	var instance = scene.instantiate()
