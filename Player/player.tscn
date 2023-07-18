@@ -957,7 +957,6 @@ character = NodePath("../..")
 animation = NodePath("../../AnimationPlayer")
 
 [node name="Abilities" type="Node2D" parent="."]
-position = Vector2(8, 5)
 
 [node name="StateDebugLabel" type="Label" parent="."]
 offset_left = -13.0

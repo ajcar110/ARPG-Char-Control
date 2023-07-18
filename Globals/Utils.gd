@@ -4,8 +4,8 @@ extends Node
 func load_ability(source:CharacterBody2D,name:String):
 	var scene = load("res://Abilities/" +name + "/" + name + ".tscn")
 	var sceneNode = scene.instantiate()
-	source.abilities.add_child(sceneNode)
 	sceneNode.source = source
+	source.abilities.add_child(sceneNode)
 	return sceneNode
 
 
