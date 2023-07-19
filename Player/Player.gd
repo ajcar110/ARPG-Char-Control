@@ -22,7 +22,7 @@ var direction_map = {"Left":Vector2.LEFT,
 					"Down":Vector2.DOWN}
 
 func _ready():
-	ability_1 = Utils.load_ability(self,"Shoot")
+	ability_1 = Utils.load_ability(self,"SpreadShot")
 
 func handleInput():
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
