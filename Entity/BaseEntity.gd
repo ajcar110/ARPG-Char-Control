@@ -14,10 +14,8 @@ signal FacingUpdated
 
 var attack
 var facing: String = "Down"
-var direction_map = {"Left":Vector2.LEFT,
-					"Right":Vector2.RIGHT,
-					"Up":Vector2.UP,
-					"Down":Vector2.DOWN}
+var facing_index: int
+var facing_arr = ["Right", "Right", "Down", "Left", "Left", "Left", "Up", "Right"]
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
@@ -34,9 +32,9 @@ func _process(delta: float) -> void:
 	states.process(delta)
 
 
-func facing_direction(targetdir):
-	if targetdir.x < 0: facing  = "Left"
-	elif targetdir.x > 0: facing = "Right"
-	elif targetdir.y >0: facing = "Down"
-	elif targetdir.y < 0: facing = "Up"
+func set_facing(direction):
+	var facing_angle = direction.angle()
+	var facing_direction = snappedf(facing_angle, PI/4) / (PI/4)
+	facing_index = wrapi(int(facing_direction),0,8)
+	facing = facing_arr[facing_index]
 

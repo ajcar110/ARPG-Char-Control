@@ -13,6 +13,9 @@ extends BaseState
 @onready var walk_state: BaseState = get_node(walk_node)
 @onready var attack_state: BaseState = get_node(attack_node)
 
+var direction_arr = [Vector2.RIGHT, Vector2(0.707107, 0.707107), Vector2.DOWN, Vector2(-0.707107, 0.707107),
+					 Vector2.LEFT, Vector2(-0.707107, -0.707107), Vector2.UP, Vector2(0.707107, -0.707107)]
+
 func input(event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("atk"):
 		return attack_state
@@ -23,11 +26,13 @@ func input(event: InputEvent) -> BaseState:
 	return null
 
 func physics_process(delta: float) -> BaseState:
-	var move = get_movement_input()
+	var direction = get_movement_input()
+	character.set_facing(direction)
+	
+	var move = direction_arr[character.facing_index]
 	character.velocity  = move * (character.speed * Global.TILESIZE)
 	character.move_and_slide()
-	
-	if move == Vector2.ZERO:
+	if direction == Vector2.ZERO:
 		return idle_state
 
 	return null
@@ -35,9 +40,3 @@ func physics_process(delta: float) -> BaseState:
 func get_movement_input() -> Vector2:
 	return Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
-	#if Input.is_action_pressed("move_left"):
-	#	return Vector2.LEFT
-	#elif Input.is_action_pressed("move_right"):
-	#	return Vector2.RIGHT
-	
-	#return Vector2.ZERO
