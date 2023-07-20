@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dtjfsbetvmbv6" path="res://Player/player.tscn" id="1_jppqs"]
 [ext_resource type="Texture2D" uid="uid://duexgt5678a7x" path="res://Assets/Tiles/Floors1.png" id="2_ucaqs"]
-[ext_resource type="PackedScene" uid="uid://col2su54bji23" path="res://UI/hotbar.tscn" id="3_ens6o"]
 [ext_resource type="PackedScene" uid="uid://ckdchykgxsdwu" path="res://Entity/entity.tscn" id="4_63xi6"]
+[ext_resource type="PackedScene" uid="uid://bb2aihch443hu" path="res://UI/ui.tscn" id="4_hlbj2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_63tx2"]
 texture = ExtResource("2_ucaqs")
@@ -30,9 +30,7 @@ position = Vector2(482, 281)
 position = Vector2(0, 1)
 position_smoothing_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Hotbar" parent="CanvasLayer" instance=ExtResource("3_ens6o")]
-
 [node name="Entity" parent="." instance=ExtResource("4_63xi6")]
 position = Vector2(658, 205)
+
+[node name="UI" parent="." instance=ExtResource("4_hlbj2")]

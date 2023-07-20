@@ -6,6 +6,8 @@ class_name State
 
 @export var animation : AnimationPlayer
 
+@onready var statemachine = get_parent()
+
 signal Transitioned
 
 func Enter():

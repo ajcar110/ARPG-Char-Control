@@ -13,4 +13,5 @@ func Enter():
 
 
 func on_facing_updated():
-	animation.play("Idle" + character.facing)
+	if statemachine.current_state == self:
+		animation.play("Idle" + character.facing)
