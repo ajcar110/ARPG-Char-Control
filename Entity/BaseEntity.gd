@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 
 
 func set_facing(direction):
+	if direction == Vector2.ZERO:
+		return null
 	var facing_angle = direction.angle()
 	var facing_direction = snappedf(facing_angle, PI/4) / (PI/4)
 	facing_index = wrapi(int(facing_direction),0,8)

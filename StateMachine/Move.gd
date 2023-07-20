@@ -40,5 +40,5 @@ func physics_process(delta: float) -> BaseState:
 	return null
 
 func get_movement_input() -> Vector2:
-	return Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	
+	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	return direction
