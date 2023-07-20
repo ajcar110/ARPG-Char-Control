@@ -28,7 +28,9 @@ func input(event: InputEvent) -> BaseState:
 func physics_process(delta: float) -> BaseState:
 	var direction = get_movement_input()
 	character.set_facing(direction)
-	
+	if facing != character.facing:
+		character.animations.play(animation_name + character.facing)
+		facing = character.facing
 	var move = direction_arr[character.facing_index]
 	character.velocity  = move * (character.speed * Global.TILESIZE)
 	character.move_and_slide()
