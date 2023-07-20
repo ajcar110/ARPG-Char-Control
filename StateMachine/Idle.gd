@@ -14,16 +14,16 @@ class_name IdleState
 func enter() -> void:
 	super.enter()
 	character.velocity = Vector2.ZERO
-	print("Idle Entered")
 
 func input(event: InputEvent) -> BaseState:
 	if (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")
 	or Input.is_action_pressed("move_down") or Input.is_action_pressed("move_up")):
 		return walk_state
+		
 	elif Input.is_action_just_pressed("atk"):
 		return attack_state
-		print("Attacking")
+		
 	elif Input.is_action_just_pressed("dash"):
 		return dash_state
-		print("Dashing")
+		
 	return null

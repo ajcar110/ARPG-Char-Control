@@ -22,9 +22,13 @@ func input(event: InputEvent) -> BaseState:
 
 # Track how long we've been dashing so we know when to exit
 func physics_process(delta: float) -> BaseState:
+	if move == Vector2.ZERO:
+		move = direction_arr[character.facing_index]
+		print(move)
 	character.velocity = move * (character.dash_speed * Global.TILESIZE)
 	character.move_and_slide()
-	
+	if character.is_on_wall():
+		return fall_state
 	if character.position.distance_to(dash_start) > dash_distance:
 		return fall_state
 
