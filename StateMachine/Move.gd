@@ -33,9 +33,11 @@ func physics_process(delta: float) -> BaseState:
 	return null
 
 func get_movement_input() -> Vector2:
-	if Input.is_action_pressed("move_left"):
-		return Vector2.LEFT
-	elif Input.is_action_pressed("move_right"):
-		return Vector2.RIGHT
+	return Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
-	return Vector2.ZERO
+	#if Input.is_action_pressed("move_left"):
+	#	return Vector2.LEFT
+	#elif Input.is_action_pressed("move_right"):
+	#	return Vector2.RIGHT
+	
+	#return Vector2.ZERO
