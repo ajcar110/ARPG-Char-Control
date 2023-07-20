@@ -1,40 +1,39 @@
 extends Node
 
+@export var starting_state: NodePath
 
-var current_state: State
-var states: Dictionary = {}
+var current_state: BaseState
 
-@export var InitialState:State
-
-func _ready():
-	for child in get_children():
-		states[child.name.to_lower()] = child
-		child.Transitioned.connect(on_state_transition)
-	if InitialState:
-		InitialState.Enter()
-		current_state = InitialState
-
-func _process(delta):
+func change_state(new_state: BaseState) -> void:
 	if current_state:
-		current_state.Update(delta)
+		current_state.exit()
 
-func _physics_process(delta):
-	if current_state:
-		current_state.Physics_Update(delta)
-
-
-#Called by signal on transition
-func on_state_transition(state, new_state_name):
-	if state != current_state:
-		return
-
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-	
-	if current_state:
-		current_state.Exit()
-	
-	new_state.Enter()
-	
 	current_state = new_state
+	current_state.enter()
+
+# Initialize the state machine by giving each state a reference to the objects
+# owned by the parent that they should be able to take control of
+# and set a default state
+func init(character: Entity) -> void:
+	for child in get_children():
+		child.character = character
+
+	# Initialize with a default state of idle
+	change_state(get_node(starting_state))
+	
+# Pass through functions for the Player to call,
+# handling state changes as needed
+func physics_process(delta: float) -> void:
+	var new_state = current_state.physics_process(delta)
+	if new_state:
+		change_state(new_state)
+
+func input(event: InputEvent) -> void:
+	var new_state = current_state.input(event)
+	if new_state:
+		change_state(new_state)
+
+func process(delta: float) -> void:
+	var new_state = current_state.process(delta)
+	if new_state:
+		change_state(new_state)

@@ -1,25 +1,23 @@
+class_name BaseState
 extends Node
 
-class_name State
+@export var animation_name: String
 
-@export var character : CharacterBody2D
+@export var character :Entity
 
-@export var animation : AnimationPlayer
+var facing
 
-@onready var statemachine = get_parent()
+func enter() -> void:
+	character.animations.play(animation_name + character.facing)
 
-signal Transitioned
-
-func Enter():
+func exit() -> void:
 	pass
 
-func Exit():
-	pass
+func input(event: InputEvent) -> BaseState:
+	return null
 
-func Update(delta:float):
-	pass
+func process(delta: float) -> BaseState:
+	return null
 
-func Physics_Update(delta:float):
-	if character.has_method("handleInput"):
-		character.handleInput()
-	character.move_and_slide()
+func physics_process(delta: float) -> BaseState:
+	return null

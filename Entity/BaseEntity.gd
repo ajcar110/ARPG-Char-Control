@@ -1,7 +1,14 @@
 extends CharacterBody2D
 
 class_name Entity
+
 @export var speed = 4
+@export var dash_speed = 8
+
+@onready var animations = $AnimationPlayer
+@onready var states = $StateMachine
+
+
 
 signal FacingUpdated
 
@@ -12,6 +19,19 @@ var direction_map = {"Left":Vector2.LEFT,
 					"Up":Vector2.UP,
 					"Down":Vector2.DOWN}
 
+func _ready() -> void:
+	# Initialize the state machine, passing a reference of the player to the states,
+	# that way they can move and react accordingly
+	states.init(self)
+
+func _unhandled_input(event: InputEvent) -> void:
+	states.input(event)
+
+func _physics_process(delta: float) -> void:
+	states.physics_process(delta)
+
+func _process(delta: float) -> void:
+	states.process(delta)
 
 
 func facing_direction(targetdir):
@@ -20,10 +40,3 @@ func facing_direction(targetdir):
 	elif targetdir.y >0: facing = "Down"
 	elif targetdir.y < 0: facing = "Up"
 
-
-func _on_detection_zone_body_entered(body):
-	var targetdir = self.position.direction_to(body.position)
-	facing_direction(targetdir)
-	print(facing)
-	FacingUpdated.emit()
-	
