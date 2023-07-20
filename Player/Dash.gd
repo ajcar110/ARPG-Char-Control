@@ -6,10 +6,12 @@ extends MoveState
 
 var dash_distance: int = 4
 var dash_start : Vector2
+var move
 
 # Upon entering the state, set dash direction to either current input or the direction the player is facing if no input is pressed
 func enter() -> void:
 	super.enter()
+	move = get_movement_input()
 	dash_start = character.position
 	dash_distance *= Global.TILESIZE
 
@@ -20,7 +22,6 @@ func input(event: InputEvent) -> BaseState:
 
 # Track how long we've been dashing so we know when to exit
 func physics_process(delta: float) -> BaseState:
-	var move = get_movement_input()
 	character.velocity = move * (character.dash_speed * Global.TILESIZE)
 	character.move_and_slide()
 	

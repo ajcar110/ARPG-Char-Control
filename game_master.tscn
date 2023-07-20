@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://opoto134h6hl"]
+[gd_scene load_steps=7 format=3 uid="uid://opoto134h6hl"]
 
 [ext_resource type="PackedScene" uid="uid://dtjfsbetvmbv6" path="res://Player/player.tscn" id="1_jppqs"]
 [ext_resource type="Texture2D" uid="uid://duexgt5678a7x" path="res://Assets/Tiles/Floors1.png" id="2_ucaqs"]
@@ -15,6 +15,9 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_63tx2")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcdm0"]
+size = Vector2(38, 274)
+
 [node name="GameMaster" type="Node2D"]
 
 [node name="Floors" type="TileMap" parent="."]
@@ -30,3 +33,10 @@ position = Vector2(0, 1)
 position_smoothing_enabled = true
 
 [node name="UI" parent="." instance=ExtResource("4_hlbj2")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(174, 304)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_kcdm0")
