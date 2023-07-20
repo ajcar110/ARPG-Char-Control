@@ -18,5 +18,6 @@ func Update(delta:float):
 	pass
 
 func Physics_Update(delta:float):
-	character.handleInput()
+	if character.has_method("handleInput"):
+		character.handleInput()
 	character.move_and_slide()

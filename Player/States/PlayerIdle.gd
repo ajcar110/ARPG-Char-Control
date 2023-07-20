@@ -2,6 +2,7 @@ extends State
 
 class_name Idle
 
+
 func Enter():
 	if character.hurtbox:
 		character.hurtbox.monitorable = true

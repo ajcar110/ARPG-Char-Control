@@ -22,7 +22,7 @@ var direction_map = {"Left":Vector2.LEFT,
 					"Down":Vector2.DOWN}
 
 func _ready():
-	ability_1 = Utils.load_ability(self,"SpreadShot")
+	ability_1 = Utils.load_ability(self,"Shoot")
 
 func handleInput():
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -32,7 +32,7 @@ func handleInput():
 	if Input.is_action_just_pressed("dash") && can_dash:
 		dashing = true
 		if direction == Vector2.ZERO:
-			direction = Vector2.DOWN
+			direction = direction_map[facing]
 		dash_direction = direction.normalized()
 		velocity = dash_direction * (dash_speed*32)
 	if Input.is_action_just_pressed("atk"):
