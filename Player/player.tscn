@@ -1,8 +1,9 @@
-[gd_scene load_steps=55 format=3 uid="uid://dtjfsbetvmbv6"]
+[gd_scene load_steps=56 format=3 uid="uid://dtjfsbetvmbv6"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_04dfh"]
 [ext_resource type="PackedScene" uid="uid://cgn6y6i3qwm2d" path="res://Entity/EntityPieces/hurtbox.tscn" id="2_plmk4"]
 [ext_resource type="Texture2D" uid="uid://tnwm5j3bupdx" path="res://Assets/character/Template/Down/TemplateDownATK.png" id="3_ofeor"]
+[ext_resource type="Script" path="res://Player/PlayerStateMachine.gd" id="4_cbjbv"]
 [ext_resource type="Texture2D" uid="uid://br65na8kqxnuh" path="res://Assets/character/Template/Left/TemplateLeftAtk.png" id="4_xmilx"]
 [ext_resource type="Script" path="res://StateMachine/Idle.gd" id="5_gjgwn"]
 [ext_resource type="Texture2D" uid="uid://drek4mcx2h7nc" path="res://Assets/character/Template/Right/TemplateRightAtk.png" id="5_qpkrp"]
@@ -15,6 +16,7 @@
 [ext_resource type="Script" path="res://Player/Attack.gd" id="8_wrt0p"]
 [ext_resource type="Texture2D" uid="uid://d3qrt1bc3gg48" path="res://Assets/character/Template/Down/TemplateDownRoll.png" id="9_67pey"]
 [ext_resource type="Texture2D" uid="uid://c56pjras87cdv" path="res://Assets/character/Template/Left/TemplateLeftRoll.png" id="10_rapfl"]
+[ext_resource type="Script" path="res://Player/BlankState.gd" id="10_xt60o"]
 [ext_resource type="Texture2D" uid="uid://of42wa5t7mv2" path="res://Assets/character/Template/Right/TemplateRightRoll.png" id="11_vtycx"]
 [ext_resource type="Texture2D" uid="uid://c774q2clqabd6" path="res://Assets/character/Template/Up/TemplateUpRoll.png" id="12_2clbq"]
 [ext_resource type="Texture2D" uid="uid://bpry7cl3ec3pm" path="res://Assets/character/Template/Right/TemplateRightRun.png" id="13_226lw"]
@@ -27,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://c7ulh8b36fcao" path="res://Assets/character/Template/Left/TemplateLeftWalk.png" id="20_mol3q"]
 [ext_resource type="Texture2D" uid="uid://df8obdtdqw0uf" path="res://Assets/character/Template/Right/TemplateRightWalk.png" id="21_8egno"]
 [ext_resource type="Texture2D" uid="uid://go6elboutwxo" path="res://Assets/character/Template/Up/TemplateUpWalk.png" id="22_tuy8s"]
-[ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="23_tgrf6"]
 [ext_resource type="Script" path="res://Player/StateDebugLable.gd" id="26_2txot"]
 [ext_resource type="PackedScene" uid="uid://cnppyhas123df" path="res://Entity/EntityPieces/damagable.tscn" id="30_80bc7"]
 
@@ -916,8 +917,6 @@ _data = {
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_04dfh")
-speed = null
-dash_speed = null
 
 [node name="HurtBox" parent="." instance=ExtResource("2_plmk4")]
 collision_layer = 8
@@ -932,28 +931,24 @@ texture = ExtResource("15_6tvx1")
 hframes = 8
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource("23_tgrf6")
-starting_state = NodePath("Idle")
+script = ExtResource("4_cbjbv")
 dash_node = NodePath("Dash")
 idle_node = NodePath("Idle")
 walk_node = NodePath("Walk")
 attack_node = NodePath("Attack")
 fall_node = NodePath("Fall")
+ability_1_node = NodePath("Ability1")
+ability_2_node = NodePath("Ability2")
+ability_3_node = NodePath("Ability3")
+starting_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
 script = ExtResource("5_gjgwn")
-walk_node = NodePath("../Walk")
-dash_node = NodePath("../Dash")
-attack_node = NodePath("../Attack")
 animation_name = "Idle"
 character = NodePath("../..")
 
 [node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
 script = ExtResource("6_7k7ck")
-dash_node = NodePath("../Dash")
-idle_node = NodePath("../Idle")
-walk_node = NodePath(".")
-attack_node = NodePath("../Attack")
 animation_name = "Walk"
 character = NodePath("../..")
 
@@ -972,7 +967,14 @@ script = ExtResource("8_wrt0p")
 animation_name = "Atk"
 character = NodePath("../..")
 
-[node name="Abilities" type="Node2D" parent="."]
+[node name="Ability1" type="Node" parent="StateMachine"]
+script = ExtResource("10_xt60o")
+
+[node name="Ability2" type="Node" parent="StateMachine"]
+script = ExtResource("10_xt60o")
+
+[node name="Ability3" type="Node" parent="StateMachine"]
+script = ExtResource("10_xt60o")
 
 [node name="Damagable" parent="." instance=ExtResource("30_80bc7")]
 
