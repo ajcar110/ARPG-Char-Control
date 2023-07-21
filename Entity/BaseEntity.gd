@@ -10,7 +10,7 @@ class_name Entity
 
 @onready var animations = $AnimationPlayer
 @onready var states = $StateMachine
-
+@onready var hitbox = $HitBox
 
 
 var facing: String = "Down"
