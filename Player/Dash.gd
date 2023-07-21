@@ -24,10 +24,9 @@ func input(event: InputEvent) -> BaseState:
 func physics_process(delta: float) -> BaseState:
 	if move == Vector2.ZERO:
 		move = direction_arr[character.facing_index]
-		print(move)
 	character.velocity = move * (character.dash_speed * Global.TILESIZE)
 	character.move_and_slide()
-	if character.is_on_wall():
+	if character.is_on_wall() or character.is_on_ceiling() or character.is_on_floor():
 		return fall_state
 	if character.position.distance_to(dash_start) > dash_distance:
 		return fall_state

@@ -962,7 +962,10 @@ character = NodePath("../..")
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
 script = ExtResource("8_obw7j")
+dash_node = NodePath("../Dash")
 idle_node = NodePath("../Idle")
+walk_node = NodePath("../Walk")
+attack_node = NodePath("../Attack")
 animation_name = "Fall"
 character = NodePath("../..")
 
