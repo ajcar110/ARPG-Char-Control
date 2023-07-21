@@ -1,6 +1,6 @@
 extends MoveState
 
-
+class_name DashState
 
 var dash_distance: int = 4 * Global.TILESIZE
 var dash_start : Vector2

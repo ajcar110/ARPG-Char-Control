@@ -1,11 +1,17 @@
 extends Area2D
 
+@export var damage:int = 1
+@export var character: Entity
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	self.monitoring = false
 
+func _on_area_entered(area):
+	for child in area.get_children():
+		if child is Damageable:
+			print("Hit:")
+			print(area.get_parent().name)
+			var direction_to_damageable = area.position.direction_to(character.position)
+			
+			child.hit(damage, direction_to_damageable)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

@@ -7,6 +7,8 @@ extends Node
 
 var facing
 
+signal interupt_state(new_state: BaseState)
+
 func enter() -> void:
 	character.animations.play(animation_name + character.facing)
 

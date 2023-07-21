@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b85anr5udfuot"]
+
+[ext_resource type="PackedScene" uid="uid://ckdchykgxsdwu" path="res://Entity/entity.tscn" id="1_e3ro4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxaf4"]
+radius = 4.0
+height = 10.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k5gg8"]
+radius = 4.0
+height = 20.0
+
+[node name="StationaryEnemy" instance=ExtResource("1_e3ro4")]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_wxaf4")
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_k5gg8")
+
+[editable path="HurtBox"]
+[editable path="HurtBox"]

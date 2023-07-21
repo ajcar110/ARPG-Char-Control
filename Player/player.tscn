@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dtjfsbetvmbv6"]
+[gd_scene load_steps=57 format=3 uid="uid://dtjfsbetvmbv6"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_04dfh"]
 [ext_resource type="PackedScene" uid="uid://cgn6y6i3qwm2d" path="res://Entity/EntityPieces/hurtbox.tscn" id="2_plmk4"]
@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://df8obdtdqw0uf" path="res://Assets/character/Template/Right/TemplateRightWalk.png" id="21_8egno"]
 [ext_resource type="Texture2D" uid="uid://go6elboutwxo" path="res://Assets/character/Template/Up/TemplateUpWalk.png" id="22_tuy8s"]
 [ext_resource type="Script" path="res://Player/StateDebugLable.gd" id="26_2txot"]
-[ext_resource type="PackedScene" uid="uid://cnppyhas123df" path="res://Entity/EntityPieces/damagable.tscn" id="30_80bc7"]
+[ext_resource type="PackedScene" uid="uid://e570ysjrmaon" path="res://Entity/EntityPieces/hitbox.tscn" id="32_sau27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsr8o"]
 size = Vector2(22, 29)
@@ -913,9 +913,11 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bifk3"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8n6v4"]
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 19
 script = ExtResource("1_04dfh")
 
 [node name="HurtBox" parent="." instance=ExtResource("2_plmk4")]
@@ -925,6 +927,9 @@ collision_mask = 0
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_wsr8o")
+
+[node name="Damagable" parent="HurtBox" index="1" node_paths=PackedStringArray("character")]
+character = NodePath("../..")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("15_6tvx1")
@@ -976,12 +981,6 @@ script = ExtResource("10_xt60o")
 [node name="Ability3" type="Node" parent="StateMachine"]
 script = ExtResource("10_xt60o")
 
-[node name="Damagable" parent="." instance=ExtResource("30_80bc7")]
-
-[node name="ATKTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "IdleDown"
 libraries = {
@@ -999,6 +998,17 @@ offset_bottom = -16.0
 script = ExtResource("26_2txot")
 StateMachine = NodePath("../StateMachine")
 
-[connection signal="timeout" from="ATKTimer" to="StateMachine/Attack" method="_on_timer_timeout"]
+[node name="HitBox" parent="." node_paths=PackedStringArray("character") instance=ExtResource("32_sau27")]
+collision_layer = 0
+collision_mask = 32
+monitoring = false
+character = NodePath("..")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, -26)
+shape = SubResource("RectangleShape2D_8n6v4")
+
+[connection signal="area_entered" from="HitBox" to="HitBox" method="_on_area_entered"]
 
 [editable path="HurtBox"]
+[editable path="HitBox"]

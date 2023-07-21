@@ -21,6 +21,7 @@ func change_state(new_state: BaseState) -> void:
 func init(character: Entity) -> void:
 	for child in get_children():
 		child.character = character
+		child.connect("interupt_state", on_state_interupt_state)
 
 	# Initialize with a default state of idle
 	change_state(get_node(starting_state))
@@ -41,3 +42,6 @@ func process(delta: float) -> void:
 	var new_state = current_state.process(delta)
 	if new_state:
 		change_state(new_state)
+
+func on_state_interupt_state(new_state: BaseState):
+	change_state(new_state)

@@ -1,17 +1,7 @@
-extends State
+extends BaseState
 
+class_name EnemyIdleState
 
-
-
-func _ready():
-	character.FacingUpdated.connect(on_facing_updated)
-
-
-func Enter():
-	animation.play("Idle" + character.facing)
-	
-
-
-func on_facing_updated():
-	if statemachine.current_state == self:
-		animation.play("Idle" + character.facing)
+func enter() -> void:
+	super.enter()
+	character.velocity = Vector2.ZERO

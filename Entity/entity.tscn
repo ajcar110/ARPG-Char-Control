@@ -1,12 +1,178 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckdchykgxsdwu"]
+[gd_scene load_steps=25 format=3 uid="uid://ckdchykgxsdwu"]
 
 [ext_resource type="Script" path="res://Entity/BaseEntity.gd" id="1_nlwaq"]
-[ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="2_43dww"]
 [ext_resource type="Texture2D" uid="uid://c0cek3ethqp7e" path="res://Assets/Enemies/StationaryEnemies/Up/RubarianIdleUp.png" id="2_oboyj"]
+[ext_resource type="Script" path="res://Entity/EnemyStateMachine.gd" id="3_r0ys2"]
 [ext_resource type="Script" path="res://Entity/EntityPieces/EnemyIdle.gd" id="3_wl3r4"]
 [ext_resource type="Texture2D" uid="uid://bqri84f454n0g" path="res://Assets/Enemies/StationaryEnemies/Left/RubarianIdleLeft.png" id="5_3lyu8"]
+[ext_resource type="Script" path="res://Player/BlankState.gd" id="5_e0eij"]
 [ext_resource type="Texture2D" uid="uid://bri3it0so0s5t" path="res://Assets/Enemies/StationaryEnemies/Right/RubarianIdleRight.png" id="6_4ovhp"]
 [ext_resource type="Texture2D" uid="uid://bmwgv4jj6dfu5" path="res://Assets/Enemies/StationaryEnemies/Down/RubarianIdleDown.png" id="7_jtt3h"]
+[ext_resource type="Texture2D" uid="uid://cqd5osbnek6v5" path="res://Assets/Enemies/StationaryEnemies/Up/RubarianAttackUp.png" id="8_4f8b7"]
+[ext_resource type="Texture2D" uid="uid://cgqj7p0a5bffh" path="res://Assets/Enemies/StationaryEnemies/Left/RubarianAttackLeft.png" id="9_fwyn7"]
+[ext_resource type="Texture2D" uid="uid://b3oflf0tw6gyy" path="res://Assets/Enemies/StationaryEnemies/Right/RubarianAttackRight.png" id="10_chykq"]
+[ext_resource type="Texture2D" uid="uid://dg6f6swgf5osr" path="res://Assets/Enemies/StationaryEnemies/Down/RubarianAttackDown.png" id="10_e3etx"]
+[ext_resource type="PackedScene" uid="uid://cgn6y6i3qwm2d" path="res://Entity/EntityPieces/hurtbox.tscn" id="13_ahkeh"]
+
+[sub_resource type="Animation" id="Animation_3lggg"]
+resource_name = "AtkDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_e3etx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_jguk3"]
+resource_name = "AtkLeft"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_fwyn7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_1giex"]
+resource_name = "AtkRight"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_chykq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_umm4u"]
+resource_name = "AtkUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_4f8b7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
 
 [sub_resource type="Animation" id="Animation_r540c"]
 resource_name = "IdleDown"
@@ -213,6 +379,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1bl67"]
 _data = {
+"AtkDown": SubResource("Animation_3lggg"),
+"AtkLeft": SubResource("Animation_jguk3"),
+"AtkRight": SubResource("Animation_1giex"),
+"AtkUp": SubResource("Animation_umm4u"),
 "IdleDown": SubResource("Animation_r540c"),
 "IdleLeft": SubResource("Animation_ku0p4"),
 "IdleRight": SubResource("Animation_beh18"),
@@ -220,13 +390,16 @@ _data = {
 "RESET": SubResource("Animation_3m1fa")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0pw4g"]
-radius = 96.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lisgr"]
+radius = 5.0
+height = 18.0
 
 [node name="Entity" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 7
 script = ExtResource("1_nlwaq")
+speed = 0
+dash_speed = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -234,10 +407,17 @@ texture = ExtResource("2_oboyj")
 hframes = 8
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource("2_43dww")
+script = ExtResource("3_r0ys2")
+attack_node = NodePath("Attack")
+starting_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_wl3r4")
+animation_name = "Idle"
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("5_e0eij")
+animation_name = "Atk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "IdleDown"
@@ -245,9 +425,14 @@ libraries = {
 "": SubResource("AnimationLibrary_1bl67")
 }
 
-[node name="DetectionZone" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
+[node name="HurtBox" parent="." instance=ExtResource("13_ahkeh")]
+collision_layer = 32
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
-shape = SubResource("CircleShape2D_0pw4g")
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CapsuleShape2D_lisgr")
+
+[node name="Damagable" parent="HurtBox" index="1" node_paths=PackedStringArray("character")]
+character = NodePath("../..")
+
+[editable path="HurtBox"]

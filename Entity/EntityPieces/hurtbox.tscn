@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://cgn6y6i3qwm2d"]
+[gd_scene load_steps=2 format=3 uid="uid://cgn6y6i3qwm2d"]
+
+[ext_resource type="PackedScene" uid="uid://cnppyhas123df" path="res://Entity/EntityPieces/damagable.tscn" id="1_o2j7x"]
 
 [node name="HurtBox" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 debug_color = Color(0.878431, 0.137255, 0, 0.419608)
+
+[node name="Damagable" parent="." instance=ExtResource("1_o2j7x")]

@@ -1,5 +1,6 @@
 extends MoveState
 
+class_name FallState
 
 var friction = .7
 

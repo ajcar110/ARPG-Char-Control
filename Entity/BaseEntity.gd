@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 class_name Entity
 
+
+@export_category("STATS")
+@export var max_health = 10
 @export var speed = 4
 @export var dash_speed = 8
 
@@ -10,9 +13,6 @@ class_name Entity
 
 
 
-signal FacingUpdated
-
-var attack
 var facing: String = "Down"
 var facing_index: int
 var facing_arr = ["Right", "Right", "Down", "Left", "Left", "Left", "Up", "Right"]

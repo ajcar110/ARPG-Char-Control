@@ -1,11 +1,16 @@
 extends Node
 
+class_name Damageable
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+signal on_hit(damage_taken:int, knockback_direction : Vector2)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
+@export var character: Entity
+
+@onready var health: float = character.max_health
+
+func hit(damage:int, knockback_direction: Vector2):
+	health -= damage
+	
+	emit_signal("on_hit", damage, knockback_direction)
