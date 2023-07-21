@@ -16,9 +16,10 @@ func input(event: InputEvent) -> BaseState:
 func physics_process(delta: float) -> BaseState:
 	if move == Vector2.ZERO:
 		move = direction_arr[character.facing_index]
-	character.velocity *= friction
+	character.velocity = character.velocity.lerp(Vector2.ZERO, .025)
+	print(character.velocity)
 	character.move_and_slide()
 	
-	if character.velocity.is_zero_approx():
+	if abs(character.velocity.x) < 70 && abs(character.velocity.y) < 70:
 		return idle_state
 	return null
