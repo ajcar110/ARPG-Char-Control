@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dewgtfsgd4l0f"]
+
+[ext_resource type="Script" path="res://Abilities/TestAbility/TestAbility.gd" id="1_fcwsv"]
+
+[node name="TestAblitiy" type="Node"]
+script = ExtResource("1_fcwsv")

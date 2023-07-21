@@ -1,12 +1,10 @@
 extends Node
 
 
-func load_ability(source:CharacterBody2D,name:String):
-	var scene = load("res://Abilities/" +name + "/" + name + ".tscn")
-	var sceneNode = scene.instantiate()
-	sceneNode.source = source
-	source.abilities.add_child(sceneNode)
-	return sceneNode
+func load_ability(name:String,state:Node,state_animation_name: String):
+	var scene = load("res://Abilities/" +name + "/" + name + ".gd")
+	state.set_script(scene)
+	state.animation_name = state_animation_name
 
 
 

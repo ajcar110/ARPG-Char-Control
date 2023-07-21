@@ -2,6 +2,19 @@ extends Node
 
 @export var starting_state: NodePath
 
+@export var dash_node: NodePath
+@export var idle_node: NodePath
+@export var walk_node: NodePath
+@export var attack_node: NodePath
+@export var fall_node: NodePath
+
+
+@onready var idle_state: BaseState = get_node(idle_node)
+@onready var dash_state: BaseState = get_node(dash_node)
+@onready var walk_state: BaseState = get_node(walk_node)
+@onready var attack_state: BaseState = get_node(attack_node)
+@onready var fall_state:BaseState = get_node(fall_node)
+
 var current_state: BaseState
 
 func change_state(new_state: BaseState) -> void:

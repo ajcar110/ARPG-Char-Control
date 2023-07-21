@@ -916,6 +916,8 @@ _data = {
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_04dfh")
+speed = null
+dash_speed = null
 
 [node name="HurtBox" parent="." instance=ExtResource("2_plmk4")]
 collision_layer = 8
@@ -932,6 +934,11 @@ hframes = 8
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("23_tgrf6")
 starting_state = NodePath("Idle")
+dash_node = NodePath("Dash")
+idle_node = NodePath("Idle")
+walk_node = NodePath("Walk")
+attack_node = NodePath("Attack")
+fall_node = NodePath("Fall")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
 script = ExtResource("5_gjgwn")
@@ -952,20 +959,11 @@ character = NodePath("../..")
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
 script = ExtResource("7_fei00")
-fall_node = NodePath("../Fall")
-dash_node = NodePath(".")
-idle_node = NodePath("../Idle")
-walk_node = NodePath("../Walk")
-attack_node = NodePath("../Attack")
 animation_name = "Dash"
 character = NodePath("../..")
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
 script = ExtResource("8_obw7j")
-dash_node = NodePath("../Dash")
-idle_node = NodePath("../Idle")
-walk_node = NodePath("../Walk")
-attack_node = NodePath("../Attack")
 animation_name = "Fall"
 character = NodePath("../..")
 
