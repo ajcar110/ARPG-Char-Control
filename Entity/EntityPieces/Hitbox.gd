@@ -11,7 +11,7 @@ func _on_area_entered(area):
 		if child is Damageable:
 			print("Hit:")
 			print(area.get_parent().name)
-			var direction_to_damageable = area.position.direction_to(character.position)
+			var direction_to_damageable = character.position.direction_to(area.position)
 			
 			child.hit(damage, direction_to_damageable)
 

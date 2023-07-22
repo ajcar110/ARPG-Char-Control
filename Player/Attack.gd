@@ -5,7 +5,7 @@ class_name AttackState
 var done = false
 
 
-func enter():
+func enter(params={}):
 	super.enter()
 	character.animations.connect("animation_finished",_on_attack_finished)
 	character.hitbox.monitoring = true

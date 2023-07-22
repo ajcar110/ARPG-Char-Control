@@ -2,6 +2,6 @@ extends Ability
 
 
 
-func enter():
+func enter(params={}):
 	super.enter()
 	print("testing")

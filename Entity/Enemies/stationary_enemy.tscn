@@ -17,6 +17,9 @@ y_sort_enabled = true
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_wxaf4")
 
+[node name="StateMachine" parent="." index="2"]
+hurt_node = NodePath("Hurt")
+
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_k5gg8")

@@ -7,7 +7,7 @@ var dash_start : Vector2
 var move
 
 # Upon entering the state, set dash direction to either current input or the direction the player is facing if no input is pressed
-func enter() -> void:
+func enter(params={}) -> void:
 	super.enter()
 	move = get_movement_input()
 	dash_start = character.position

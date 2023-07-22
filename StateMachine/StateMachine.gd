@@ -8,12 +8,12 @@ class_name StateMachine
 
 var current_state: BaseState
 
-func change_state(new_state: BaseState) -> void:
+func change_state(new_state: BaseState, params={}) -> void:
 	if current_state:
 		current_state.exit()
 
 	current_state = new_state
-	current_state.enter()
+	current_state.enter(params)
 
 # Initialize the state machine by giving each state a reference to the objects
 # owned by the parent that they should be able to take control of
@@ -43,5 +43,5 @@ func process(delta: float) -> void:
 	if new_state:
 		change_state(new_state)
 
-func on_state_interupt_state(new_state: BaseState):
-	change_state(new_state)
+func on_state_interupt_state(new_state: BaseState, params={}):
+	change_state(new_state, params)

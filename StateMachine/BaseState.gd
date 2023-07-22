@@ -7,9 +7,9 @@ extends Node
 
 var facing
 
-signal interupt_state(new_state: BaseState)
+signal interupt_state(new_state: BaseState, params: Dictionary)
 
-func enter() -> void:
+func enter(params={}) -> void:
 	character.animations.play(animation_name + character.facing)
 
 func exit() -> void:

@@ -11,7 +11,7 @@ class_name Entity
 @onready var animations = $AnimationPlayer
 @onready var states = $StateMachine
 @onready var hitbox = $HitBox
-
+@onready var damageable = $HurtBox/Damagable
 
 var facing: String = "Down"
 var facing_index: int

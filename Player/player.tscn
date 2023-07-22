@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dtjfsbetvmbv6"]
+[gd_scene load_steps=58 format=3 uid="uid://dtjfsbetvmbv6"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_04dfh"]
 [ext_resource type="PackedScene" uid="uid://cgn6y6i3qwm2d" path="res://Entity/EntityPieces/hurtbox.tscn" id="2_plmk4"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://d3qrt1bc3gg48" path="res://Assets/character/Template/Down/TemplateDownRoll.png" id="9_67pey"]
 [ext_resource type="Texture2D" uid="uid://c56pjras87cdv" path="res://Assets/character/Template/Left/TemplateLeftRoll.png" id="10_rapfl"]
 [ext_resource type="Script" path="res://Player/BlankState.gd" id="10_xt60o"]
+[ext_resource type="Script" path="res://StateMachine/Hurt.gd" id="11_j3x14"]
 [ext_resource type="Texture2D" uid="uid://of42wa5t7mv2" path="res://Assets/character/Template/Right/TemplateRightRoll.png" id="11_vtycx"]
 [ext_resource type="Texture2D" uid="uid://c774q2clqabd6" path="res://Assets/character/Template/Up/TemplateUpRoll.png" id="12_2clbq"]
 [ext_resource type="Texture2D" uid="uid://bpry7cl3ec3pm" path="res://Assets/character/Template/Right/TemplateRightRun.png" id="13_226lw"]
@@ -942,6 +943,7 @@ idle_node = NodePath("Idle")
 walk_node = NodePath("Walk")
 attack_node = NodePath("Attack")
 fall_node = NodePath("Fall")
+hurt_node = NodePath("Hurt")
 ability_1_node = NodePath("Ability1")
 ability_2_node = NodePath("Ability2")
 ability_3_node = NodePath("Ability3")
@@ -980,6 +982,10 @@ script = ExtResource("10_xt60o")
 
 [node name="Ability3" type="Node" parent="StateMachine"]
 script = ExtResource("10_xt60o")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("11_j3x14")
+animation_name = "Walk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "IdleDown"

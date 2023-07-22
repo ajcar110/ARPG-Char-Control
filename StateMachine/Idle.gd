@@ -4,7 +4,7 @@ class_name IdleState
 
 
 
-func enter() -> void:
+func enter(params={}) -> void:
 	super.enter()
 	character.velocity = Vector2.ZERO
 

@@ -24,9 +24,9 @@ func physics_process(delta: float) -> BaseState:
 	var move = direction_arr[character.facing_index]
 	character.velocity  = move * (character.speed * Global.TILESIZE)
 	character.move_and_slide()
+	
 	if direction == Vector2.ZERO:
 		return character.states.idle_state
-
 	return null
 
 func get_movement_input() -> Vector2:

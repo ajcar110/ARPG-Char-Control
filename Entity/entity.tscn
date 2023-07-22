@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckdchykgxsdwu"]
+[gd_scene load_steps=26 format=3 uid="uid://ckdchykgxsdwu"]
 
 [ext_resource type="Script" path="res://Entity/BaseEntity.gd" id="1_nlwaq"]
 [ext_resource type="Texture2D" uid="uid://c0cek3ethqp7e" path="res://Assets/Enemies/StationaryEnemies/Up/RubarianIdleUp.png" id="2_oboyj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bqri84f454n0g" path="res://Assets/Enemies/StationaryEnemies/Left/RubarianIdleLeft.png" id="5_3lyu8"]
 [ext_resource type="Script" path="res://Player/BlankState.gd" id="5_e0eij"]
 [ext_resource type="Texture2D" uid="uid://bri3it0so0s5t" path="res://Assets/Enemies/StationaryEnemies/Right/RubarianIdleRight.png" id="6_4ovhp"]
+[ext_resource type="Script" path="res://StateMachine/Hurt.gd" id="6_f1ikg"]
 [ext_resource type="Texture2D" uid="uid://bmwgv4jj6dfu5" path="res://Assets/Enemies/StationaryEnemies/Down/RubarianIdleDown.png" id="7_jtt3h"]
 [ext_resource type="Texture2D" uid="uid://cqd5osbnek6v5" path="res://Assets/Enemies/StationaryEnemies/Up/RubarianAttackUp.png" id="8_4f8b7"]
 [ext_resource type="Texture2D" uid="uid://cgqj7p0a5bffh" path="res://Assets/Enemies/StationaryEnemies/Left/RubarianAttackLeft.png" id="9_fwyn7"]
@@ -409,6 +410,8 @@ hframes = 8
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_r0ys2")
 attack_node = NodePath("Attack")
+hurt_node = NodePath("Hurt")
+idle_node = NodePath("Idle")
 starting_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
@@ -418,6 +421,10 @@ animation_name = "Idle"
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("5_e0eij")
 animation_name = "Atk"
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("6_f1ikg")
+animation_name = "Walk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "IdleDown"

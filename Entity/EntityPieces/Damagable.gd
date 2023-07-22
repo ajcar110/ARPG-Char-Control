@@ -12,5 +12,8 @@ signal on_hit(damage_taken:int, knockback_direction : Vector2)
 
 func hit(damage:int, knockback_direction: Vector2):
 	health -= damage
-	
-	emit_signal("on_hit", damage, knockback_direction)
+	character.states.hurt_state.interupt_state.emit(
+		character.states.hurt_state,
+		{"damage": damage, "knockback_direction": knockback_direction}
+	)
+	#emit_signal("on_hit", damage, knockback_direction)
