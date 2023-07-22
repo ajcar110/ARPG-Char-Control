@@ -2,8 +2,8 @@ extends Node
 
 
 func load_ability(name:String,state:Node,state_animation_name: String):
-	var scene = load("res://Abilities/" +name + "/" + name + ".gd")
-	state.set_script(scene)
+	var script = load("res://Abilities/" +name + "/" + name + ".gd")
+	state.set_script(script)
 	state.animation_name = state_animation_name
 
 

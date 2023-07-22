@@ -1,8 +1,8 @@
 extends BaseState
 
+class_name BlankState
 
 func enter():
-	super.enter()
 	print("NO STATE FUNCTIONALITY")
 
 func physics_process(delta: float) -> BaseState:

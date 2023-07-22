@@ -22,4 +22,3 @@ position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_k5gg8")
 
 [editable path="HurtBox"]
-[editable path="HurtBox"]

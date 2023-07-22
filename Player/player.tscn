@@ -999,7 +999,6 @@ script = ExtResource("26_2txot")
 StateMachine = NodePath("../StateMachine")
 
 [node name="HitBox" parent="." node_paths=PackedStringArray("character") instance=ExtResource("32_sau27")]
-collision_layer = 0
 collision_mask = 32
 monitoring = false
 character = NodePath("..")
